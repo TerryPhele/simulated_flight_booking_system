@@ -35,7 +35,7 @@ public class Ticket {
     @Override
     public  boolean equals(Object obj){
         if(obj == null || obj.getClass() != getClass()) return  false;
-        if( this == null && obj != null) return false;
+        if( this == obj) return true;
         Ticket ticket = (Ticket)obj;
         return ticketNumber == ticket.ticketNumber && myPassenger == ticket.myPassenger &&
         myFlight == ticket.myFlight;
@@ -46,5 +46,13 @@ public class Ticket {
         int hash = myPassenger.hashCode();
         hash = 31 * hash + ticketNumber;
         return hash;
+    }
+    @Override
+    public String toString(){
+        return  String.format("Ticket number: %10d\n" +
+                "Airline: %10s\n" +
+                "Flight: %10s\n" +
+                "Passenger Name: %20s\n" +
+                "Price :R20%f", ticketNumber, myAirLine, myFlight, myPassenger, price);
     }
 }
