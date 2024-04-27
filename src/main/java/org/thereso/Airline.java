@@ -12,13 +12,17 @@ public class Airline {
      *  cancels the specified ticket from list of all tickets in booking
      * @param t
      */
-    public void cancel( Ticket t){}
+    public void cancel( Ticket t){
+        t.cancel();
+    }
 
     /**
      * prints out a message on the screen about which passenger has been refunded and how much
      * @param t
      */
-    public void issueRefund(Ticket t){}
+    public void issueRefund(Ticket t){
+        System.out.printf( "Amount of R%d refunded to %s", );
+    }
 
 
     /**
@@ -57,12 +61,31 @@ public class Airline {
 
     }
 
+
+
     /**
      * removes the flight from the database
      * @param flightNumber
      */
     public void removeFlight( int flightNumber){
 
+    }
+
+    public  String getName(){ return  name;}
+
+    @Override
+    public  boolean equals(Object obj){
+        if(obj == null || obj.getClass() != getClass()) return  false;
+        if( this == obj) return true;
+        Airline airline = (Airline) obj;
+        return airline.name.equalsIgnoreCase( name);
+    }
+
+    @Override
+    public int hashCode(){
+        int hash = name.hashCode();
+        hash = 31 * hash + 10;
+        return hash;
     }
 
 

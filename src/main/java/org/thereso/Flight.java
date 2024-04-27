@@ -52,11 +52,27 @@ public class Flight {
      * delete the canceled ticket
      * @param t
      */
-    public  void removeTicket( Ticket t){}
+    public  void removeTicket( Ticket t){
+        this.ticketsBooked.remove( t );
+    }
 
     /**
      * generate cost based on this.Airline method that calculates the cost for the ticket
      * @return
      */
     public  double getCost(){ return  0.0d;}
+    @Override
+    public  boolean equals(Object obj){
+        if(obj == null || obj.getClass() != getClass()) return  false;
+        if( this == obj) return true;
+        Flight flight = (Flight)obj;
+        return flightNumber == flight.flightNumber && airline.equals(flight.airline);
+    }
+
+    @Override
+    public int hashCode(){
+        int hash = airline.hashCode();
+        hash = 31 * hash + flightNumber;
+        return hash;
+    }
 }
